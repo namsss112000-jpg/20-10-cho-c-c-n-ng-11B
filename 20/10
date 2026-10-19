@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quà 20/10 dành cho các bạn nữ 💗</title>
+<style>
+  :root { --pink:#ff5c9a; --deep:#a72c68; --cream:#fff7fb; }
+  * { box-sizing:border-box; }
+  body {
+    margin:0; min-height:100vh; overflow-x:hidden; color:#64264a;
+    font-family: "Trebuchet MS", system-ui, sans-serif;
+    background: radial-gradient(circle at top, #fffafd 0, #ffe3f0 48%, #ffc7df 100%);
+    display:flex; align-items:center; justify-content:center; padding:24px 14px;
+  }
+  .glow { position:fixed; width:220px; height:220px; border-radius:50%; filter:blur(50px); opacity:.45; pointer-events:none; }
+  .g1 { background:#ff7fb3; top:5%; left:-70px; }
+  .g2 { background:#f6a9ff; bottom:0; right:-60px; }
+  .card {
+    position:relative; z-index:2; width:min(100%,560px); text-align:center;
+    background:rgba(255,255,255,.82); border:2px solid #fff;
+    border-radius:28px; padding:clamp(24px,6vw,42px) clamp(18px,5vw,36px);
+    box-shadow:0 18px 55px rgba(174,45,106,.18); backdrop-filter:blur(8px);
+  }
+  .tag { display:inline-block; background:#ffe2ee; color:#b62e70; border-radius:99px; padding:8px 14px; font-size:13px; font-weight:800; letter-spacing:.4px; }
+  h1 { font-size:clamp(27px,7vw,42px); line-height:1.15; margin:18px 0 10px; color:#d9367c; }
+  .subtitle { font-size:16px; line-height:1.65; margin:0 auto 22px; max-width:410px; }
+  .gift-button { border:0; background:transparent; cursor:pointer; display:block; margin:8px auto 14px; transition:transform .2s; }
+  .gift-button:hover { transform:translateY(-5px) rotate(-2deg); }
+  .gift { position:relative; width:130px; height:110px; margin:28px auto 0; }
+  .lid { position:absolute; width:144px; height:28px; left:-7px; top:0; background:#ff5c9a; border:3px solid #d9367c; border-radius:8px; transition:transform .8s cubic-bezier(.2,.8,.2,1); transform-origin:left bottom; z-index:2; }
+  .box { position:absolute; left:8px; top:24px; width:114px; height:82px; background:#ff8db8; border:3px solid #d9367c; border-radius:4px 4px 12px 12px; }
+  .ribbon-v { position:absolute; left:52px; top:0; width:22px; height:106px; background:#ffe58c; border-left:2px solid #e6b94c; border-right:2px solid #e6b94c; z-index:1; }
+  .bow { position:absolute; left:42px; top:-19px; width:25px; height:22px; border:7px solid #ffe58c; border-radius:100% 0 100% 0; transform:rotate(25deg); z-index:3; }
+  .bow:after { content:""; position:absolute; left:15px; top:-4px; width:25px; height:22px; border:7px solid #ffe58c; border-radius:0 100% 0 100%; transform:rotate(30deg); }
+  .opened .lid { transform:translate(-12px,-36px) rotate(-25deg); }
+  .hint { font-size:13px; color:#a34a78; margin:4px 0 18px; }
+  .primary { background:linear-gradient(135deg,#ff5c9a,#e83e86); color:white; border:0; padding:14px 23px; border-radius:999px; font-size:16px; font-weight:800; cursor:pointer; box-shadow:0 8px 20px #ff9bc3; }
+  .primary:active { transform:scale(.98); }
+  .letter { display:none; text-align:left; margin-top:24px; background:#fff7fb; border:1px dashed #f18bb7; border-radius:20px; padding:22px; animation:rise .65s ease both; }
+  .letter.show { display:block; }
+  .letter h2 { text-align:center; color:#d9367c; margin:0 0 14px; font-size:25px; }
+  .letter p { line-height:1.75; margin:12px 0; }
+  .sign { text-align:right; font-weight:800; color:#c43b7c; margin-top:20px!important; }
+  .footer { font-size:12px; color:#a65a80; margin-top:22px; }
+  .heart,.petal { position:fixed; top:-35px; z-index:5; pointer-events:none; animation:fall linear forwards; }
+  .heart { font-size:20px; animation-name:heartfall; }
+  .petal { width:13px; height:19px; border-radius:80% 10% 80% 10%; background:#ff72a9; opacity:.85; }
+  @keyframes heartfall { to { transform:translate3d(var(--drift),110vh,0) rotate(360deg); opacity:.1; } }
+  @keyframes fall { to { transform:translate3d(var(--drift),110vh,0) rotate(700deg); opacity:.1; } }
+  @keyframes rise { from { opacity:0; transform:translateY(15px); } to { opacity:1; transform:translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { *,*:before,*:after { animation-duration:.01ms!important; transition-duration:.01ms!important; } }
+</style>
+</head>
+<body>
+<div class="glow g1"></div><div class="glow g2"></div>
+<main class="card" id="card">
+  <span class="tag">🌷 20 THÁNG 10 🌷</span>
+  <h1>Gửi những bông hoa<br>của lớp mình 💗</h1>
+  <p class="subtitle">Hôm nay có một món quà nho nhỏ dành riêng cho các bạn nữ. Không phải bài kiểm tra đâu, yên tâm! 😌</p>
+  <button class="gift-button" id="giftButton" aria-label="Mở hộp quà 20 tháng 10">
+    <div class="gift" id="gift">
+      <div class="lid"></div><div class="box"></div><div class="ribbon-v"></div><div class="bow"></div>
+    </div>
+  </button>
+  <p class="hint">👆 Chạm vào hộp quà để mở bất ngờ</p>
+  <button class="primary" id="openButton">Mở quà nè 🎁</button>
+  <section class="letter" id="letter" aria-live="polite">
+    <h2>Chúc mừng 20/10! 🌸</h2>
+    <p>Gửi toàn thể các bạn nữ thân yêu của lớp,</p>
+    <p>Chúc các bạn ngày càng xinh tươi, vui vẻ, học hành thuận lợi, kiểm tra trúng tủ và lúc nào cũng gặp may. Mong rằng điểm số thì tăng đều, deadline thì tự biến mất, còn tiền tiêu vặt thì cứ tự động sinh sôi! 😂</p>
+    <p>Chúc các bạn luôn tự tin, được yêu thương, được tôn trọng và làm điều mình thích. Nếu hôm nay có ai chưa được tặng hoa thì xin nhận tạm bó hoa online này, chất lượng tinh thần 5 sao, phí vận chuyển bằng 0 đồng. 💐</p>
+    <p>Cảm ơn các bạn vì đã làm lớp mình vui hơn, nhiều màu sắc hơn và đôi khi… ồn hơn một chút cũng không sao. Chúc mọi người có một ngày 20/10 thật đáng nhớ!</p>
+    <p class="sign">— Từ một thành viên của lớp 💌</p>
+  </section>
+  <p class="footer">Một món quà online nhỏ xíu, gửi thật nhiều niềm vui ✨</p>
+</main>
+<script>
+  const card = document.getElementById('card');
+  const gift = document.getElementById('gift');
+  const letter = document.getElementById('letter');
+  let opened = false;
+  function sprinkle() {
+    const symbols = ['💗','💕','💖','💞','🌸'];
+    for (let i=0; i<30; i++) {
+      const el = document.createElement('span');
+      const heart = Math.random() > .38;
+      el.className = heart ? 'heart' : 'petal';
+      if (heart) el.textContent = symbols[Math.floor(Math.random()*symbols.length)];
+      el.style.left = Math.random()*100 + 'vw';
+      el.style.setProperty('--drift', (Math.random()*180-90)+'px');
+      el.style.animationDuration = (3+Math.random()*4)+'s';
+      el.style.animationDelay = (Math.random()*1.2)+'s';
+      if (!heart && Math.random()>.5) el.style.background='#ffc1d9';
+      document.body.appendChild(el);
+      setTimeout(()=>el.remove(), 8500);
+    }
+  }
+  function openGift() {
+    if (opened) { sprinkle(); return; }
+    opened = true;
+    gift.classList.add('opened');
+    letter.classList.add('show');
+    document.getElementById('openButton').textContent = 'Thả thêm yêu thương 💕';
+    document.querySelector('.hint').textContent = 'Quà đã mở rồi, gửi lời chúc đến mọi người nhé!';
+    sprinkle();
+    setTimeout(()=>letter.scrollIntoView({behavior:'smooth',block:'nearest'}),200);
+  }
+  document.getElementById('giftButton').addEventListener('click',openGift);
+  document.getElementById('openButton').addEventListener('click',openGift);
+</script>
+</body>
+</html>
